@@ -1,19 +1,31 @@
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Main from './pages/main'; // Importando o componente Main
-import Login from './pages/Login'; // Importando o componente Login
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Layout from './components/Layout';
+import Login from './pages/Login';
+import Main from './pages/Main';
+// import AdicionarImovel from './pages/AdicionarImovel';
+// import Relatorio from './pages/Relatorio';
+// import Contratos from './pages/Contratos';
+// import Financeiro from './pages/Financeiro';
 
-function App() {
+const App = () => {
   return (
     <Router>
       <Routes>
-        {/* Rota para a página inicial */}
-        <Route path="/" element={<Main />} />
-        
-        {/* Rota para a página de login */}
+        {/* Página de Login sem Sidebar */}
         <Route path="/login" element={<Login />} />
+
+        {/* Aplicando o Layout para todas as outras páginas */}
+        <Route element={<Layout />}>
+          <Route path="/" element={<Main />} />
+          {/* <Route path="/adicionar-imovel" element={<AdicionarImovel />} />
+          <Route path="/relatorio" element={<Relatorio />} />
+          <Route path="/contratos" element={<Contratos />} />
+          <Route path="/financeiro" element={<Financeiro />} /> */}
+        </Route>
       </Routes>
     </Router>
   );
-}
+};
 
 export default App;
