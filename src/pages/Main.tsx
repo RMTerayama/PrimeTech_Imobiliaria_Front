@@ -59,11 +59,10 @@ const Main = () => {
     <Box 
       sx={{ 
         minHeight: "100vh", 
-        width: "100%", 
+        width: { xs: "100vw", sm: "85vw"}, 
         display: "flex", 
         flexDirection: "column", 
-        padding: 3, 
-        backgroundColor: "#F5F5F5",
+        padding: 3
       }}
     >
       {/* Título no topo */}

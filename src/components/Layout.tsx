@@ -10,8 +10,7 @@ const Layout = () => {
       <Sidebar />
 
       {/* Conteúdo Principal */}
-      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-        <Toolbar /> {/* Para compensar a altura da AppBar */}
+      <Box component="main" sx={{ flexGrow: 1, height: "100vh" }}>
         <Outlet /> {/* Renderiza o conteúdo das páginas */}
       </Box>
     </Box>
