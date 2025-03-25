@@ -1,35 +1,32 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Layout from './components/Layout';
+import Login from './pages/Login';
+import Main from './pages/Main';
+import AdicionarImovel from './pages/AdicionarImovel';
+// import Relatorio from './pages/Relatorio';
+// import Contratos from './pages/Contratos';
+// import Financeiro from './pages/Financeiro';
 
-function App() {
-  const [count, setCount] = useState(0)
-
+const App = () => {
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <Router>
+      <Routes>
+        {/* Página de Login sem Sidebar */}
+        <Route path="/login" element={<Login />} />
 
-export default App
+        {/* Aplicando o Layout para todas as outras páginas */}
+        <Route element={<Layout />}>
+          <Route path="/" element={<Main />} />
+          <Route path="/adicionar-imovel" element={<AdicionarImovel />} />
+          {/* 
+          <Route path="/relatorio" element={<Relatorio />} />
+          <Route path="/contratos" element={<Contratos />} />
+          <Route path="/financeiro" element={<Financeiro />} /> */}
+        </Route>
+      </Routes>
+    </Router>
+  );
+};
+
+export default App;
